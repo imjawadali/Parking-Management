@@ -1,4 +1,5 @@
-const Cities = require('./modules/Cities')
+const ParkingAlocations = require('./modules/ParkingAlocations');
+const ParkingSlots = require('./modules/ParkingSlots');
 
 class QueryContext {
     constructor(db, auth = {}) {
@@ -6,11 +7,18 @@ class QueryContext {
         this.auth = auth
     }
 
-    get cities() {
-        if (this._cities === undefined) {
-            this._cities = new Cities(this.db, this);
+    get parkingSlots() {
+        if (this._parkingSlots === undefined) {
+            this._parkingSlots = new ParkingSlots(this.db, this);
         }
-        return this._cities;
+        return this._parkingSlots;
+    }
+
+    get parkingAlocations() {
+        if (this._parkingAlocations === undefined) {
+            this._parkingAlocations = new ParkingAlocations(this.db, this);
+        }
+        return this._parkingAlocations;
     }
 }
 module.exports = QueryContext; 

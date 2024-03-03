@@ -8,5 +8,8 @@ module.exports = {
             filename: env.DB_FILENAME
         }
     },
-    itemsPerPage: 10
+    noOfSlots: 10,
+    perHourRate: 10,
+    itemsPerPage: 10,
+    timezoneConflict: Number(env.TIMEZONE_CONFLICT || 0)
 }
