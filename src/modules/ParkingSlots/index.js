@@ -57,8 +57,7 @@ class ParkingSlots extends BaseModel {
   }
 
   async getTotalParkingsByDate(date) {
-    const dateRange = time.getDateRange(date)
-    let parkingSlots = this
+    const nextDate = time.getNextDate(date)
     return await this.db
       .select(
         'PS.slot_number',
@@ -70,8 +69,8 @@ class ParkingSlots extends BaseModel {
       .join('parking_alocations AS PA', function () {
         this.on('PA.slot_number', '=', 'PS.slot_number')
         this.andOnVal('PA.is_active', '=', false)
-        this.andOnVal('PA.parked_at', '>=', parkingSlots.db.raw(`DATE(\'${dateRange.currentDate}\')`))
-        this.andOnVal('PA.parked_at', '<', dateRange.nextDate)
+        this.andOnVal('PA.parked_at', '>=', new Date(date))
+        this.andOnVal('PA.parked_at', '<', nextDate)
       }, 'left')
       .groupBy('PS.slot_number')
       .orderByRaw('CAST(PS.slot_number AS decimal)')

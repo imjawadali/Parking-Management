@@ -120,16 +120,11 @@ const time = {
   },
   retainUtcConflict: (dateTime) =>
     dateTime.replace(' ', 'T') + '.000Z',
-  getDateRange: (date) => {
-    const current = new Date(date);
-    current.setHours(current.getHours() - timezoneConflict)
+  getNextDate: (date) => {
     const next = new Date(date);
     next.setDate(next.getDate() + 1);
-    next.setHours(next.getHours() - timezoneConflict)
-    return {
-      currentDate: current.toISOString(),
-      nextDate: next.toISOString()
-    }
+    next.setHours(next.getHours())
+    return next.toISOString()
   }
 };
 
