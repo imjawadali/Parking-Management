@@ -1,0 +1,7 @@
+.env
+/node_modules
+/logs
+/database/ParkingManagement.db3
+
+package-lock.json
+yarn.lock

@@ -1,0 +1,1 @@
+exports.PARKING_SLOT_ALLOTTED = 'Paking slot allotted successfully'
