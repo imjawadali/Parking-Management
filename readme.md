@@ -1,4 +1,4 @@
-steps to run projects
+steps to run project
 
 1. place .env file at root
 2. run following commads:
