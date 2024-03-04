@@ -6,3 +6,4 @@ steps to run project
     - npm run migrations
     - npm run seed
 3. now you can run project
+   - npm run dev
